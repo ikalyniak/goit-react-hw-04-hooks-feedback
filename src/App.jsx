@@ -9,24 +9,25 @@ import styles from './App.module.css';
 
 export default function App() {
   const options = ['good', 'neutral', 'bad'];
+
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
   const onLeaveFeedback = event => {
-    const { name, value } = event.target;
+    const { name } = event.target;
 
     switch (name) {
       case 'good':
-        setGood(value + 1);
+        setGood(state => state + 1);
         break;
 
       case 'neutral':
-        setNeutral(value + 1);
+        setNeutral(state => state + 1);
         break;
 
       case 'bad':
-        setBad(value + 1);
+        setBad(state => state + 1);
         break;
 
       default:
@@ -37,7 +38,7 @@ export default function App() {
   const countTotalFeedback = () => good + neutral + bad;
 
   const countPositiveFeedbackPercentage = () =>
-    Math.round((this.state.good * 100) / this.countTotalFeedback());
+    Math.round((good * 100) / countTotalFeedback());
 
   return (
     <div className={styles.App}>
