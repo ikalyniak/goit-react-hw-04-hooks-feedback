@@ -4,15 +4,15 @@ import styles from './FeedbackOptions.module.css';
 function FeedbackOptions({ options, onLeaveFeedback }) {
   return (
     <ul className={styles.list}>
-      {Object.entries(options).map(option => (
-        <li key={option[0]} className={styles.item}>
+      {options.map(option => (
+        <li key={option} className={styles.item}>
           <button
             type="button"
-            name={option[0]}
+            name={option}
             className={styles.button}
             onClick={onLeaveFeedback}
           >
-            {option[0]}
+            {option}
           </button>
         </li>
       ))}
@@ -21,7 +21,7 @@ function FeedbackOptions({ options, onLeaveFeedback }) {
 }
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.objectOf(PropTypes.number),
+  options: PropTypes.array.isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
 };
 
